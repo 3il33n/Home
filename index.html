@@ -4,7 +4,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="zh-CN">
 	<head>
 		<title>Welcome to 3il33n.com</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -12,11 +12,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 		<meta name="renderer" content="webkit">
-		<meta http-equiv="Cache-Control" content="no-transform">
+		<meta name="description" content="3il33n 的个人主页">
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-		<meta name="theme-color" content="#0F7D00">
+		<meta name="theme-color" content="#fdf3f6">
 		<meta property="og:image" content="https://www.nange.cn/image/others/bingo.jpeg">
-		<meta name="msapplication-TileColor" content="#0F7D00">
+		<meta name="msapplication-TileColor" content="#fdf3f6">
 		<link rel="stylesheet" href="css/main.css" />
 		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
 	</head>
@@ -28,9 +28,9 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<span class="avatar"><img src="image/avatar.jpg" alt="" /></span>
+							<span class="avatar"><img src="image/avatar.jpg" alt="3il33n 的头像" /></span>
 							<h1>3il33n</h1>
-							<p style="color: pink;">Chiaki❤</p>
+							<p class="tagline">Chiaki ❤</p>
 						</header>
 						<!--
 						<hr />
@@ -71,17 +71,18 @@
 						-->
 						<footer>
 							<ul class="icons">
-								<li><a href="https://hpa.eileen.pub" target="_blank" class="icon solid fa-school" title="希望之峰学园"><span class="label">希望之峰学园</span></a></li>
-								<li><a href="https://space.bilibili.com/323829183/" target="_blank" class="icon brands fa-bilibili" title="哔哩哔哩"><span class="label">哔哩哔哩</span></a></li>
-								<li><a href="https://steamcommunity.com/id/3il33n/" target="_blank" class="icon brands fa-steam"" title="Steam"><span class="label">Steam</span></a></li>
-                                <li><a href="image/donate.png" target="_blank" rel="noopener" class="icon brands fa-stripe-s" title="捐赠支持"><span class="label">捐赠支持</span></a></li>
+								<li><a href="https://hpa.eileen.pub" target="_blank" rel="noopener" class="icon solid fa-school" title="希望之峰学园" aria-label="希望之峰学园"><span class="label">希望之峰学园</span></a></li>
+								<li><a href="https://space.bilibili.com/323829183/" target="_blank" rel="noopener" class="icon brands fa-bilibili" title="哔哩哔哩" aria-label="哔哩哔哩"><span class="label">哔哩哔哩</span></a></li>
+								<li><a href="https://steamcommunity.com/id/3il33n/" target="_blank" rel="noopener" class="icon brands fa-steam" title="Steam" aria-label="Steam"><span class="label">Steam</span></a></li>
+								<li><a href="image/donate.png" target="_blank" rel="noopener" class="icon brands fa-stripe-s" title="捐赠支持" aria-label="捐赠支持"><span class="label">捐赠支持</span></a></li>
 							</ul>
 						</footer>
 					</section>
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-							<li>&copy; Copyright 2026 <a href="https://3il33n.com/" target="_blank">3il33n</a></li>
+							<li>&copy; Copyright <span id="copyright-year">2026</span> <a href="https://3il33n.com/" target="_blank" rel="noopener">3il33n</a></li>
+							<li class="uptime">已运行 <span id="uptime" class="value">—</span></li>
 						</ul>
 					</footer>
 
@@ -94,8 +95,44 @@
 				}
 			</script>
 			<script>
+				(function () {
+					var LAUNCH = new Date(2024, 6, 26, 0, 0, 0); /* 2024-07-26, month is 0-based */
+
+					function pad(n) {
+						return n < 10 ? '0' + n : '' + n;
+					}
+
+					function setText(id, text) {
+						var el = document.getElementById(id);
+						if (el) el.textContent = text;
+					}
+
+					function tick() {
+						var now = new Date();
+						setText('copyright-year', now.getFullYear());
+
+						var elapsed = now - LAUNCH;
+						if (elapsed < 0) {
+							setText('uptime', '刚刚上线');
+							return;
+						}
+
+						var seconds = Math.floor(elapsed / 1000);
+						var days = Math.floor(seconds / 86400);
+						var hours = Math.floor((seconds % 86400) / 3600);
+						var minutes = Math.floor((seconds % 3600) / 60);
+						var secs = seconds % 60;
+
+						setText('uptime', days + ' 天 ' + pad(hours) + ' 时 ' + pad(minutes) + ' 分 ' + pad(secs) + ' 秒');
+					}
+
+					tick();
+					setInterval(tick, 1000);
+				})();
+			</script>
+			<script>
 			console.log("%c%c3il33n%chttps://www.3il33n.com", "line-height:28px;", "line-height:28px;padding:4px;background:#2ccbe6;color:#FADFA3;font-size:14px;", "padding:4px 4px 4px 2px;background:#ff146d;color:green;line-height:28px;font-size:12px;");
-            </script>
+			</script>
 	</body>
 </html>
 
